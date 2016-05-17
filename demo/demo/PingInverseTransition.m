@@ -29,7 +29,6 @@
     CGFloat progress = [gesture locationInView:gesture.view].x / CGRectGetWidth(gesture.view.frame);
     progress = MIN(MAX(0, progress), 1);
     
-    NSLog(@"%.2lf", progress);
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan:
             _interactive = YES;
@@ -84,6 +83,7 @@
     maskLayerAnimation.fromValue = (__bridge id)(maskStartPath.CGPath);
     maskLayerAnimation.toValue = (__bridge id)(maskFinalPath.CGPath);
     maskLayerAnimation.duration = [self transitionDuration:transitionContext];
+    
     maskLayerAnimation.delegate = self;
     
     [maskLayer addAnimation:maskLayerAnimation forKey:@"path"];
